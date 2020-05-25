@@ -88,14 +88,14 @@ function Square(props) {
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
   
-      const notify = history.map((step, notify) => {
-       const desc = notify ?
-     toast('Go to move #' + notify, {autoClose: 4000}) :
-      toast('Go to game start', {autoClose: 3000});
+      const moves = history.map((step, move) => {
+       const desc = move ?
+     toast('Go to move #' + move, {autoClose: 4000}) :
+      toast.success('Go to game start', {autoClose: 3000});
       return (
 
-           <li key= {notify}>
-            <button onClick={() => this.jumpTo(notify)}>{desc}</button>
+           <li key= {move}>
+            <button onClick={() => this.jumpTo(move)}>{desc}</button>
           
           </li>
         );
@@ -118,7 +118,7 @@ function Square(props) {
           </div>
           <div className="game-info">
             <div>{status}</div>
-            {/* <ol>{notify}</ol> */}
+            {/* <ol>{moves}</ol> */}
           </div>
         </div>
       );
