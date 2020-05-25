@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {ToastContainer,toast}from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import './index.css';
 function Square(props) {
     return (
@@ -8,8 +10,8 @@ function Square(props) {
       </button>
     );
   }
-  
-  class Board extends React.Component {
+ 
+   class Board extends React.Component {
     renderSquare(i) {
       return (
         <Square
@@ -18,8 +20,7 @@ function Square(props) {
         />
       );
     }
-  
-    render() {
+  render() {
       return (
         <div>
           <div className="board-row">
@@ -41,7 +42,7 @@ function Square(props) {
       );
     }
   }
-  
+    toast.configure()
   class Game extends React.Component {
     constructor(props) {
       super(props);
@@ -55,7 +56,7 @@ function Square(props) {
         xIsNext: true
       };
     }
-  
+
     handleClick(i) {
       const history = this.state.history.slice(0, this.state.stepNumber + 1);
       const current = history[history.length - 1];
@@ -81,23 +82,25 @@ function Square(props) {
         xIsNext: (step % 2) === 0
       });
     }
-  
+ 
     render() {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
   
-      const moves = history.map((step, move) => {
-        const desc = move ?
-          'Go to move #' + move :
-          'Go to game start';
-        return (
-          <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+      const notify = history.map((step, notify) => {
+       const desc = notify ?
+     toast('Go to move #' + notify, {autoClose: 4000}) :
+      toast('Go to game start', {autoClose: 3000});
+      return (
+
+           <li key= {notify}>
+            <button onClick={() => this.jumpTo(notify)}>{desc}</button>
+          
           </li>
         );
       });
-  
+
       let status;
       if (winner) {
         status = "Winner: " + winner;
@@ -115,12 +118,13 @@ function Square(props) {
           </div>
           <div className="game-info">
             <div>{status}</div>
-            <ol>{moves}</ol>
+            {/* <ol>{notify}</ol> */}
           </div>
         </div>
       );
     }
   }
+  
 //   ========================================
   
   ReactDOM.render(<Game />, document.getElementById("root"));

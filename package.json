@@ -1,5 +1,5 @@
 {
-  "homepage": "http://Ashukumar7036.github.io/tictactoe-deploy",
+  "homepage": "https://Ashukumar7036.github.io/TicTacToe/",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -7,9 +7,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "gh-pages": "^2.2.0",
+    "index.js": "0.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.5"
   },
   "scripts": {
     "predeploy": "npm run build",
